@@ -1,3 +1,11 @@
 <h1>
-  {{title}}
+  <!-- Cuando utilizamos {{ }} estamos sincronizando la vista de el modelo -->
+  {{ title }}
 </h1>
+
+<!-- Para instanciar un componente indicamos una etiqueta HTML que responda al
+ selector definido en ese componente -->
+<lista-contactos 
+  [contactos]="['Tim Cook', 'Elon Musk', 'Bill Gates']"
+  (contactoSeleccionado)="mostrarContactoSeleccionado($event)
+  "> </lista-contactos>
