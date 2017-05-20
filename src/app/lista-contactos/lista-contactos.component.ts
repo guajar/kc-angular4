@@ -17,7 +17,7 @@ export class ListaContactosComponent implements OnInit {
   ngOnInit() {
   }
 
-  notificarContactoSeleccionado(contacto: string): void {
+  notificarEliminacionContacto(contacto: string): void {
     this.contactoSeleccionado.emit(contacto);
   }
 
