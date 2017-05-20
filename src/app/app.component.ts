@@ -38,4 +38,10 @@ export class AppComponent implements OnInit {
       this._listaContactos = this._contactoService.obtenerContactos();
     }
   }
+
+  // Este manejador se encarga de crear nuevos contactos en la app
+  darAltaContacto(contacto: Contacto): void {
+    this._contactoService.crearContacto(contacto);
+    this._listaContactos = this._contactoService.obtenerContactos();
+  }
 }

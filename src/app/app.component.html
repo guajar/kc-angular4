@@ -3,6 +3,11 @@
   {{ _title }}
 </h1>
 
+<!-- Formulario de alta de contactos -->
+<formulario-alta 
+  (alCrearContacto)="darAltaContacto($event)">
+</formulario-alta>
+
 <!-- Para instanciar un componente indicamos una etiqueta HTML que responda al
  selector definido en ese componente -->
 <lista-contactos 
