@@ -1,3 +1,4 @@
+import { ContactoService } from './contacto.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,13 +14,21 @@ export class AppComponent implements OnInit {
   // Los atributos de clase no necesitan ser definidos con 'let.
   // Aunque los atributos se marquen como privados, siguen siendo
   // visibles para el template.
-  private title: string; 
+  private _title: string; 
+  private _listaContactos: string[];
+
+  // Para hacer una inyección de dependencia debemos indicar en el 
+  // constructor de una clase un parámetro tipado precisamente con 
+  // el servicio que queremos usar. Además debemos añadir siempre el modificador
+  // de acceso.
+  constructor(private _contactoService: ContactoService) { }
 
   // Este método es de obligatoria implementación cuando usamos la inerfaz OnInit. 
   // Puesto que no retorna nada, podemos anotarlo como 'void'. 
   // Este método se ejecuta al instanciarse la clase 'AppComponent'.
   ngOnInit(): void {
-    this.title = 'Buenas noches Keepcoders!!';
+    this._title = 'Super Agenda';
+    this._listaContactos = this._contactoService.obtenerContactos();
   }
 
   mostrarContactoSeleccionado(contacto: string): void {
