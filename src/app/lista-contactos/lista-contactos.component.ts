@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Contacto } from '../contacto';
 
 @Component({
   selector: 'lista-contactos',
@@ -7,18 +8,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ListaContactosComponent implements OnInit {
 
-  @Input() contactos: string[];
-  @Output() contactoSeleccionado: EventEmitter<string>;
+  @Input() contactos: Contacto[];
+  @Output() alEliminarContacto: EventEmitter<Contacto>;
 
   constructor() {
-     this.contactoSeleccionado = new EventEmitter<string>();
+     this.alEliminarContacto = new EventEmitter<Contacto>();
    }
 
   ngOnInit() {
   }
 
-  notificarEliminacionContacto(contacto: string): void {
-    this.contactoSeleccionado.emit(contacto);
+  notificarEliminacionContacto(contacto: Contacto): void {
+    // Para notificar, basta con ejecutar la función 'emit'
+    this.alEliminarContacto.emit(contacto);
   }
 
 }
