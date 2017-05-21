@@ -1,16 +1,19 @@
-<h1>
-  <!-- Cuando utilizamos {{ }} estamos sincronizando la vista de el modelo -->
-  {{ _title }}
-</h1>
+<!-- Título -->
+<h1>Super Agenda</h1>
 
-<!-- Formulario de alta de contactos -->
-<formulario-alta 
-  (alCrearContacto)="darAltaContacto($event)">
-</formulario-alta>
+<!-- Barra navegación -->
+<nav>
+  <ul>
+    <li>
+      <!-- Para navegar a una ruta definida desde un template, usamos la directiva RouterLink -->
+      <a routerLink="/mis-contactos">Mis Contactos</a>
+    </li>
+    <li>
+      <a routerLink="/nuevo-contacto">Nuevo Contacto</a>
+    </li>
+  </ul>
+</nav>
 
-<!-- Para instanciar un componente indicamos una etiqueta HTML que responda al
- selector definido en ese componente -->
-<lista-contactos 
-  [contactos]="_listaContactos"
-  (alEliminarContacto)="avisarEliminacionContacto($event)"> 
-</lista-contactos>
+<!-- Zona dinámica -->
+<router-outlet></router-outlet>
+

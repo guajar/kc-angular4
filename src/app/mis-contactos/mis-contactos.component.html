@@ -1,0 +1,10 @@
+<h2>
+  Mis Contactos
+</h2>
+
+<!-- Para instanciar un componente indicamos una etiqueta HTML que responda al
+ selector definido en ese componente -->
+<lista-contactos 
+  [contactos]="_listaContactos"
+  (alEliminarContacto)="avisarEliminacionContacto($event)"> 
+</lista-contactos>
