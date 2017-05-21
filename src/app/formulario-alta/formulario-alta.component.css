@@ -1,0 +1,14 @@
+/* Estilo para indicar que una caja de texto está mal informada */
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+/* Estilo para indicar que una caja de texto está bien informada */
+input.ng-touched.ng-valid {
+    border: 1px solid green;
+}
+
+/* Estilo para indicar mensajes de error */
+.mensaje-error {
+    color: red;
+}
