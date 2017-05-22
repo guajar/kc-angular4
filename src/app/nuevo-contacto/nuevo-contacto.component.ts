@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 import { Contacto } from '../contacto';
 import { ContactoService } from '../contacto.service';
@@ -23,9 +24,14 @@ export class NuevoContactoComponent implements OnInit {
 
   // Este manejador se encarga de crear nuevos contactos en la app
   darAltaContacto(contacto: Contacto): void {
-    this._contactoService.crearContacto(contacto);
-    alert('El contacto se ha creado correctamente');
-    this._router.navigate(['/mis-contactos']);
+    this._contactoService
+        .crearContacto(contacto)
+        .subscribe((nuevoContacto: Contacto) => {
+          alert(`El contacto ${nuevoContacto.nombre} se ha creado correctamente`);
+          // Podemos navegar desde un componente a través del 'Router',
+          // necesitamos inyectarlos como dependecia para poder acceder al mismo
+          this._router.navigate(['/mis-contactos']);
+        });    
   }
 
 }
