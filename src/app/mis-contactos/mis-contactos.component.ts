@@ -44,15 +44,6 @@ export class MisContactosComponent implements OnInit {
             });
             */
           });
-
-
-
-
-      this._contactoService
-        .obtenerContactos()
-        .subscribe((contactos: Contacto[]) => {
-          this._listaContactos = contactos;
-        });
     }
   }
 

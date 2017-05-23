@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Contacto } from './contacto';
+import { ApiUrl } from './settings';
+
 
 // Una clase decorada con 'Injectable' se comporta como un servicio. Este decorador
 // hace posible que el servicio pueda inyectarse como dependencia en otras clases
@@ -14,12 +16,16 @@ export class ContactoService {
 
   // Para poder hacer peticiones HTTP necesitamos el cliente correspondiente. Tenemos
   // que inyectarlo como dependencia para usarlo en el servicio.
-  constructor(private _http: Http) { }
+  constructor(
+    private _http: Http, 
+    // Cuando solicitamos la inyección de dependencias de un valor, 
+    // tenemos que usar siempre el decorador 'Inject' indicando el token correspondiente
+    @Inject(ApiUrl) private _apiUrl) { }
 
   // Obtiene una colección de contactos
   obtenerContactos(): Observable<Contacto[]> {
     return this._http
-               .get('http://localhost:3004/contactos')
+               .get(`${this._apiUrl}/contactos`)
                // Con el operador 'map' transformamos el 'Observable<Response>'
                // que retorna la función 'get' en un 'Observable<Contacto[]>
                .map((respuesta: Response) => {
@@ -30,7 +36,7 @@ export class ContactoService {
   // Añadir contacto
   crearContacto(contacto: Contacto): Observable<Contacto> {
     return this._http
-               .post('http://localhost:3004/contactos', contacto)
+               .post(`${this._apiUrl}/contactos`, contacto)
                .map((respuesta: Response) => {
                  return respuesta.json() as Contacto;
                });
@@ -39,7 +45,7 @@ export class ContactoService {
   // Elimina el contacto indicado
   eliminarContacto(contacto: Contacto): Observable<Contacto> {
     return this._http
-               .delete(`http://localhost:3004/contactos/${contacto.id}`)
+               .delete(`${this._apiUrl}/contactos/${contacto.id}`)
                .map(() => {
                  return contacto;
                });
