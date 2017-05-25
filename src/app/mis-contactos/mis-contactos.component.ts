@@ -10,6 +10,7 @@ import { ContactoService } from '../contacto.service';
 export class MisContactosComponent implements OnInit {
 
   private _listaContactos: Contacto[];
+  private _contactoSeleccionado: Contacto;
 
   // Para hacer una inyección de dependencia debemos indicar en el 
   // constructor de una clase un parámetro tipado precisamente con 
@@ -45,6 +46,10 @@ export class MisContactosComponent implements OnInit {
             */
           });
     }
+  }
+
+  verDetalles(contacto: Contacto): void {
+    this._contactoSeleccionado = contacto;
   }
 
 }

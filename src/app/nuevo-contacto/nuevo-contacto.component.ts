@@ -27,11 +27,9 @@ export class NuevoContactoComponent implements OnInit {
     this._contactoService
         .crearContacto(contacto)
         .subscribe((nuevoContacto: Contacto) => {
-          alert(`El contacto ${nuevoContacto.nombre} se ha creado correctamente`);
           // Podemos navegar desde un componente a través del 'Router',
           // necesitamos inyectarlos como dependecia para poder acceder al mismo
           this._router.navigate(['/mis-contactos']);
         });    
   }
-
 }
