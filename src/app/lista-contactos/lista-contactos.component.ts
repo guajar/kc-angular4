@@ -10,6 +10,8 @@ export class ListaContactosComponent {
 
   private _ordenacionAscendente: boolean = true;
 
+  // Con el decorador 'Input' exponemos un atributo al componente padre para
+  // que pueda pasarnos datos (Padre > Hijo)
   @Input() contactos: Contacto[];
 
   /*

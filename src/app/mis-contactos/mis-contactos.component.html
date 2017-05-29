@@ -15,6 +15,10 @@
     </lista-contactos>
   </div>
   <div class="six columns">
-    <detalles-contacto [contacto]="_contactoSeleccionado"></detalles-contacto>
+    <detalles-contacto 
+    [contacto]="_contactoSeleccionado"
+    (alPulsarFacebook)="navegarFacebook($event)"
+    (alPulsarTwitter)="navegarTwitter($event)">
+    </detalles-contacto>
   </div>
 </div>
