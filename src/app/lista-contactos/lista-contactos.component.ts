@@ -8,6 +8,8 @@ import { Contacto } from '../contacto';
 })
 export class ListaContactosComponent {
 
+  private _ordenacionAscendente: boolean = true;
+
   @Input() contactos: Contacto[];
 
   /*
@@ -30,6 +32,10 @@ export class ListaContactosComponent {
 
   notificarSeleccionContacto(contacto: Contacto): void {
     this.alSeleccionarContacto.emit(contacto);
+  }
+
+  invertirOrder(): void {
+    this._ordenacionAscendente = !this._ordenacionAscendente;
   }
 
 }
